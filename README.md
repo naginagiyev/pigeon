@@ -14,26 +14,8 @@
 
 **Pigeon** is a small desktop app for **Windows**. It helps you **share files on your local network** (LAN). Everyone who runs Pigeon on the same network can see shared files and download them directly from each other’s computers.
 
-Think of it like a carrier pigeon: you drop a file into the app, and others on the network can pick it up.
-
 - Files stay on your machine until someone downloads them.
 - No internet upload is required for sharing (only your local network).
-- Works well for offices, classrooms, and home networks.
-
----
-
-## Main features
-
-| Feature | Description |
-|--------|-------------|
-| **Auto discovery** | Other users appear automatically when they run Pigeon on the same network. |
-| **Drag and drop** | Add files by dragging them into the window or by clicking to browse. |
-| **Live file list** | See files shared by others, with name, size, and who shared them. |
-| **Downloads** | Save files to a folder you choose, with progress shown in the list. |
-| **Resume** | Pause or retry downloads; the app can continue from where it stopped. |
-| **Nickname** | Set a short name so others know who is sharing (no spaces). |
-| **Dark theme** | Comfortable interface with a dark look on Windows. |
-| **Notifications** | Small pop‑ups when someone joins or when a download finishes. |
 
 ---
 
@@ -42,7 +24,7 @@ Think of it like a carrier pigeon: you drop a file into the app, and others on t
 1. **You share files** — Add files in the center panel. Pigeon keeps a list of what you are sharing.
 2. **Pigeon announces itself** — Every few seconds, your app sends a short message on the local network (UDP broadcast) with your nickname, address, and file list.
 3. **Others listen** — Other copies of Pigeon hear that message and show your files in the left panel.
-4. **Someone downloads** — When they click download, Pigeon opens a direct connection (TCP) to your computer and copies the file in chunks (1 MB at a time).
+4. **Someone downloads** — When they click download, Pigeon opens a direct connection (TCP) to your computer and copies the file in chunks.
 
 ```text
   Your PC                         Other PC
@@ -63,45 +45,29 @@ Think of it like a carrier pigeon: you drop a file into the app, and others on t
 - **Same local network** — All devices should be on the same Wi‑Fi or wired LAN.
 - **Firewall** — Windows may ask to allow Pigeon on private networks; allow it so others can connect.
 
-### Network ports
-
-| Port | Protocol | Purpose |
-|------|----------|---------|
-| **50001** | UDP | Find other users and share file lists |
-| **50002** | TCP | Send and receive file data |
-
-Only one copy of Pigeon should use these ports on each PC.
-
 ---
 
 ## Quick start
 
-### Option A — Run the executable
+### Option A — Download the Windows build
 
-If you have `Pigeon.exe` in the project folder:
+Download Pigeon from my website: [products page](file:///C:/Users/nagin/OneDrive/Belgeler/Projects/Personal%20Website/products.html)
 
-1. Double‑click **Pigeon.exe**.
-2. If Windows SmartScreen appears, choose to run anyway (for unsigned local builds) or use a build you trust.
+1. Download **Pigeon.exe**.
+2. Double‑click **Pigeon.exe**.
 3. Allow network access when the firewall asks.
 
 ### Option B — Run from source
 
 1. **Clone or copy** this project to your computer.
 
-2. **Create a virtual environment** (recommended):
-
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-
-3. **Install dependencies**:
+2. **Install dependencies**:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Start the app**:
+3. **Start the app**:
 
    ```bash
    python app.py
@@ -123,7 +89,6 @@ The window has three areas:
 ### Center panel — Share your files
 
 - **Drag and drop** files onto the box, or **click** to pick files.
-- Shared files also show in the left list under your nickname.
 
 ### Right panel — Your nickname
 
@@ -137,7 +102,6 @@ The window has three areas:
 
 - **Config file**: `%APPDATA%\Pigeon\lanshare.config.json`
   - Stores your nickname.
-- **Old config**: If you used an older version, settings may be copied from `lanshare.config.json` next to the app into the folder above.
 
 ---
 
@@ -171,20 +135,8 @@ Pigeon/
 
 - **Same network only** — Pigeon does not work across the public internet by default.
 - **VPNs** — Some VPNs block local discovery; turn off VPN or allow local traffic if peers do not appear.
-- **Large files** — Transfers are direct and can use a lot of bandwidth; stay on the same switch or Wi‑Fi for best speed.
 - **One instance per PC** — Starting a second copy may fail because port 50002 is already in use.
 - **File paths** — Do not move or delete a file while you are still sharing it; remove it from the list first.
-
----
-
-## Troubleshooting
-
-| Problem | What to try |
-|--------|-------------|
-| Nobody appears in the list | Check that all PCs are on the same Wi‑Fi/LAN and that the firewall allows Pigeon on **private** networks. |
-| Port already in use | Close other copies of Pigeon or other apps using port 50002. |
-| Download fails | Make sure the other person still has the app open and the file still exists on their disk. Use **Retry** if the row shows an error. |
-| Nickname will not save | Use letters and numbers only — **no spaces**. |
 
 ---
 
@@ -192,16 +144,4 @@ Pigeon/
 
 - **Python 3** with **PyQt6** for the interface
 - **UDP** for discovery and announcements
-- **TCP** for reliable file transfer with resume support
-
----
-
-## License
-
-License terms are not set in this repository yet. Add a `LICENSE` file if you plan to publish or share the project publicly.
-
----
-
-<p align="center">
-  <sub>Share freely on your LAN — like a pigeon with a package.</sub>
-</p>
+- **TCP** for reliable file transfer
