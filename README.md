@@ -19,6 +19,12 @@
 
 ---
 
+## Screenshot
+
+![Pigeon application view](assets/app.jpg)
+
+---
+
 ## How it works (simple overview)
 
 1. **You share files** — Add files in the center panel. Pigeon keeps a list of what you are sharing.
