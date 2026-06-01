@@ -57,7 +57,7 @@
 
 ### Option A — Download the Windows build
 
-Download Pigeon from my website: [products page](file:///C:/Users/nagin/OneDrive/Belgeler/Projects/Personal%20Website/products.html)
+Download Pigeon from my website: [products page](https://naginagiyev.vercel.app/products.html)
 
 1. Download **Pigeon.exe**.
 2. Double‑click **Pigeon.exe**.
